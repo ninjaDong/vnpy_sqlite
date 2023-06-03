@@ -41,7 +41,6 @@ class DbBarData(Model):
     interval: str = CharField()
 
     volume: float = FloatField()
-    turnover: float = FloatField()
     open_interest: float = FloatField()
     open_price: float = FloatField()
     high_price: float = FloatField()
@@ -64,7 +63,6 @@ class DbTickData(Model):
 
     name: str = CharField()
     volume: float = FloatField()
-    turnover: float = FloatField()
     open_interest: float = FloatField()
     last_price: float = FloatField()
     last_volume: float = FloatField()
@@ -289,7 +287,6 @@ class SqliteDatabase(BaseDatabase):
                 datetime=datetime.fromtimestamp(db_bar.datetime.timestamp(), DB_TZ),
                 interval=Interval(db_bar.interval),
                 volume=db_bar.volume,
-                turnover=db_bar.turnover,
                 open_interest=db_bar.open_interest,
                 open_price=db_bar.open_price,
                 high_price=db_bar.high_price,
@@ -326,7 +323,6 @@ class SqliteDatabase(BaseDatabase):
                 datetime=datetime.fromtimestamp(db_tick.datetime.timestamp(), DB_TZ),
                 name=db_tick.name,
                 volume=db_tick.volume,
-                turnover=db_tick.turnover,
                 open_interest=db_tick.open_interest,
                 last_price=db_tick.last_price,
                 last_volume=db_tick.last_volume,
